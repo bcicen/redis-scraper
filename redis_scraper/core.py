@@ -24,7 +24,7 @@ class ProcessRedisQ(object):
         r = redis.StrictRedis(host=host,port=self.r_port,db=0)
         log.debug('connected to redis host at %s:%s' % (host,str(self.r_port)))
         kcount = 0
-        for k in r.keys():
+        for k in [ k for k in r.keys() if r.type(k) == 'list' ]:
             wcount = 0
             klen = r.llen(k)
             f = "" + self.log_dir + "/" + k + ".log"
