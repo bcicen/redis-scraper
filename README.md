@@ -1,6 +1,6 @@
 # redis-scraper
 
-redis-scraper is a small program that utilizes a reliable queue pattern to simply pull the contents of all queues/keys in a given redis instance to a flat file periodically.
+redis-scraper is a small program that utilizes a reliable queue pattern to simply pull the contents of all queues/keys in a given redis instance to a flat file
 
 ## Quickstart
 
