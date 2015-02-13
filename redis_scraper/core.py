@@ -6,18 +6,15 @@ from string import digits
 log = logging.getLogger()
 
 class ProcessRedisQ(object):
-    def __init__(self,redis_pool,log_dir,redis_port=6379,interval=10):
+    def __init__(self,redis_pool,log_dir,redis_port=6379):
         self.r_hosts = redis_pool
         self.r_port  = redis_port
         self.log_dir = log_dir
-        self.interval = interval
-        self.pollforever()    
+        self.poll()    
 
-    def pollforever(self):
-        while True:
-            for h in self.r_hosts:
-                self.process(h)
-            time.sleep(self.interval)
+    def poll(self):
+        for h in self.r_hosts:
+            self.process(h)
 
     def process(self, host):
         stime = time.time()
@@ -51,3 +48,5 @@ class ProcessRedisQ(object):
                 kcount,
                 (time.time() - stime)
                 ))
+        else:
+            log.info('no lists found to process')

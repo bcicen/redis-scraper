@@ -1,6 +1,6 @@
 # redis-scraper
 
-redis-scraper is a small program that utilizes a reliable queue pattern to simply pull the contents of all queues/keys in a given redis instance to a flat file
+redis-scraper is a small program that utilizes a reliable queue pattern to simply pull the contents of all lists in a given redis instance to a flat file
 
 ## Quickstart
 
@@ -15,7 +15,7 @@ cd redis-scraper
 docker build -t redis-scraper .
 docker run -d -v $(pwd):/data redis-scraper redishost1.mydomain redishost2.mydomain
 ```
-redis-scraper will start pulling all keys stored in redis to respective files in the directory mounted at /data, polling every 60s. 
+redis-scraper will start pulling all keys stored in redis to respective files in the directory mounted at /data
 
 ## CLI Usage
 
